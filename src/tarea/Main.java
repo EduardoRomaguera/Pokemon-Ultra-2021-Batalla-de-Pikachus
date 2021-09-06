@@ -26,7 +26,6 @@ public class Main {
         out.println("3-Al subir de nivel se sube en 1");
         out.println("4-Al atacar o curarse se cura o ataca por el nivel que tenga el pokemon");
         out.println("5-Gana el primero que disminuya los puntos de vida del enemigo a 0"+ANSI_RESET);
-
         out.println(ANSI_GREEN + "Cambiar nombre a Pikachu 1");
         out.println("Nuevo nombre del pikachu: ");
         String nombre = in.readLine();
@@ -47,7 +46,7 @@ public class Main {
                 out.println("        ");
                 out.println("        ");
             }
-            opcion = printMenu1();
+            opcion = printMenu(pikachu1.getNombre());
             switch (opcion) {
                 case 1:
                     out.println("Curando...");
@@ -69,7 +68,7 @@ public class Main {
             out.println("---- --- --- --- --- ----");
             out.println("        ");
             out.println("        ");
-            opcion = printMenu2();
+            opcion = printMenu(pikachu2.getNombre());
             switch (opcion) {
                 case 1:
                     out.println("Curando...");
@@ -110,19 +109,8 @@ public class Main {
         } while (opcion != 0);
     }
 
-    public static int printMenu1() throws IOException {
-        out.println(ANSI_GREEN + "------ Jugador 1 ------");
-        out.println("1. Curar");
-        out.println("2. Subir nivel");
-        out.println("3. Atacar");
-        out.println("0. Rendirse");
-        out.println("---- --- --- --- --- ----");
-        int opcion = Integer.parseInt(in.readLine());
-        return opcion;
-    }
-
-    public static int printMenu2() throws IOException {
-        out.println(ANSI_BLUE + "------ Jugador 2 ------");
+    public static int printMenu(String name) throws IOException {
+        out.println(ANSI_GREEN + "------ "+name+" ------");
         out.println("1. Curar");
         out.println("2. Subir nivel");
         out.println("3. Atacar");
@@ -141,9 +129,10 @@ public class Main {
     }
 
     public static void printGanador(pikachu pikachu) throws IOException {
-        out.println(ANSI_CYAN + "El ganador es ");
-        out.print(pikachu.getNombre());
-        out.println("Eres todo un maestro pokemon");
+        out.println(ANSI_CYAN + "Ataque crítico! ");
+        out.print("El ganador es ");
+        out.println(pikachu.getNombre());
+        out.println("Eres un maestro pokemon");
     }
 
     public static void printEmpate() throws IOException {
